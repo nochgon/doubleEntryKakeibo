@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import ReactDOM from "react-dom";
 import {DualEntry} from "./dualEntry";
-//import {EntryInput} from "./entryInput";
 import {ObjectRepository} from "./repository/objectRepository"
 
 
@@ -24,9 +23,8 @@ function Layout(props){
     const [amountCredit, setAmountCredit] = useState(0);
 
     return (
-        <div style={{position: 'relative', left: '50px'}}>
-            <br/>
-            <DualEntry repository={repository} debt={debt} credit={credit} styleTable={styleTable} /><br/>
+        <div style={{position: 'relative', left: '50px', top: '30px'}}>
+            <DualEntry debt={debt} credit={credit} styleTable={styleTable}/><br/>
             <div style={{}}>
                 <label>借方　</label>
                 <input name="titleDebt" value={titleDebt} onChange={(event) => setTitleDebt(event.target.value)}/>
