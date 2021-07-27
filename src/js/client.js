@@ -33,9 +33,9 @@ function Layout(props){
                 <input name="titleCredit" value={titleCredit} onChange={(event) => setTitleCredit(event.target.value)}/>
                 <input name="amountCredit" value={amountCredit} onChange={(event) => setAmountCredit(event.target.value)}/><br/>
                 <button onClick={() => {
-                    repository.add(titleDebt, parseFloat(amountDebt), titleCredit, parseFloat(amountCredit));
-                    setDebt(repository.get_debt())
-                    setCredit(repository.get_credit())
+                    props.repository.add(titleDebt, parseFloat(amountDebt), titleCredit, parseFloat(amountCredit));
+                    setDebt(props.repository.get_debt())
+                    setCredit(props.repository.get_credit())
                 }}>add</button>
             </div>
         </div>
