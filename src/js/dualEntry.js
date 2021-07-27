@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 const styleHeader = {
     border: "solid 1px"
@@ -15,8 +15,12 @@ const styleSeparator = {
 }
 
 export function DualEntry(props){
-    const listDebt = Object.entries(props.debt);
-    const listCredit = Object.entries(props.credit);
+    // useStateの準備
+    const [debt, setDebt] = useState(props.repository._debt)
+    const [credit, setCredit] = useState(props.repository._credit)
+
+    const listDebt = Object.entries(debt);
+    const listCredit = Object.entries(credit);
 
     const lengthTable = listDebt.length >= listCredit.length ? listDebt.length : listCredit.length;
 

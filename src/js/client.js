@@ -18,7 +18,10 @@ class Layout extends React.Component {
         return (
             <div style={{position: 'relative', left: '50px'}}>
                 <br></br>
-                <DualEntry debt={repository._debt} credit={repository._credit} styleTable={styleTable} />
+                <DualEntry repository={repository} styleTable={styleTable} />
+                <br></br>
+                <input></input><input></input><br></br>
+                <button>add</button>
             </div>
         )
     }
@@ -26,5 +29,3 @@ class Layout extends React.Component {
 
 const app = document.getElementById('app');
 ReactDOM.render(<Layout/>, app);
-
-//<DualTable headLeft={"test1"} headRight={"test2"} listLeft={listLeft} listRight={listRight} style={tableStyle()}/>
