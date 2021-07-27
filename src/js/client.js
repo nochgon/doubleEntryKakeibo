@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import ReactDOM from "react-dom";
 import {DualEntry} from "./dualEntry";
-import {EntryInput} from "./entryInput";
+//import {EntryInput} from "./entryInput";
 import {ObjectRepository} from "./repository/objectRepository"
 
 
@@ -14,17 +14,33 @@ const styleTable = {
     border: "solid 1px"
 };
 
-
 function Layout(props){
     // useStateの準備
     const [debt, setDebt] = useState(props.repository._debt)
     const [credit, setCredit] = useState(props.repository._credit)
+    const [titleDebt, setTitleDebt] = useState('');
+    const [amountDebt, setAmountDebt] = useState(0);
+    const [titleCredit, setTitleCredit] = useState('');
+    const [amountCredit, setAmountCredit] = useState(0);
 
     return (
         <div style={{position: 'relative', left: '50px'}}>
-            <br></br>
-            <DualEntry debt={debt} credit={credit} styleTable={styleTable} /><br></br>
-            <EntryInput repository={repository} />
+            <br/>
+            <DualEntry repository={repository} debt={debt} credit={credit} styleTable={styleTable} /><br/>
+            <div style={{}}>
+                <label>借方　</label>
+                <input name="titleDebt" value={titleDebt} onChange={(event) => setTitleDebt(event.target.value)}/>
+                <input name="amountDebt" value={amountDebt} onChange={(event) => setAmountDebt(event.target.value)}/><br/>
+                <label>貸方　</label>
+                <input name="titleCredit" value={titleCredit} onChange={(event) => setTitleCredit(event.target.value)}/>
+                <input name="amountCredit" value={amountCredit} onChange={(event) => setAmountCredit(event.target.value)}/><br/>
+                <button onClick={() => {
+                    repository.add(titleDebt, parseFloat(amountDebt), titleCredit, parseFloat(amountCredit));
+                    console.log(repository)
+                    setDebt(repository.get_debt())
+                    setCredit(repository.get_credit())
+                }}>add</button>
+            </div>
         </div>
     )
 }

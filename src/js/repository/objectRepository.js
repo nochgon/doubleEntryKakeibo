@@ -17,4 +17,12 @@ export class ObjectRepository {
             this._credit[creditAccount] = creditAmount;
         };
     }
+
+    get_debt(){
+        return {...this._debt}
+    }
+
+    get_credit(){
+        return {...this._credit}
+    }
 };
